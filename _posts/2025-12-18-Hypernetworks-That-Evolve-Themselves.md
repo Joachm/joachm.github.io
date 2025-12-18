@@ -22,7 +22,6 @@ With this method, the study that originally introduced the GHN showed that GHNs 
 Evolutionary Algorithms (EAs) have a long history as optimization algorithms for neural networks. They belong to the class of gradient-free optimization methods and thus provide a lot of flexibility in terms of the type of problems they can be applied to. Further, for reinforcement learning environments, EAs have been shown to have several advantages over gradient-based reinforcement learning algorithms, namely being better at handling delayed and sparse rewards, and having better chances of escaping local optima points.
 While the family of EAs is large, any EA will have some generic traits in some form or another. The figures below show that self-referential GHNs mainly separate themselves from other EAs by localizing the mutation mechanism within the individuals, resulting in each individual having their own unique mutation mechanism.
  
-** EVO ALGO PLOTS **
 
 <div style="display:flex; gap:20px; align-items:flex-start;">
   <figure style="margin:0; width:50%; text-align:center;">
