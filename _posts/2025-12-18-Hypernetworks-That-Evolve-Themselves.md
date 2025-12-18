@@ -4,6 +4,9 @@ title: "Hypernetworks That Evolve Themselves"
 date: 2025-12-18
 ---
 
+
+![Evolution Loop of the SR-GHN](/assets/images/hypernets/ghn_evo_loop.png)
+
 Hypernetworks are a class of deep neural networks that are tasked with producing the parameters for other neural networks. In this work, we let hypernetworks produce parameter updates to copies of themselves. Combined with a simple selection mechanism, this results in a new type of genetic algorithm, where the mutation mechanism is a heritable trait. In each generation, new hypernetworks find novel ways of producing parameters for policy networks and different ways of mutating the weights of their copies. In other words, a population of hypernetworks optimizes both their performance in a task and the optimization process itself.
  
 
