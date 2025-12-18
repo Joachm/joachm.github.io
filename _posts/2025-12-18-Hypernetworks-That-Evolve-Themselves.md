@@ -1,9 +1,21 @@
+---
+layout: post
+title: "Hypernetworks That Evolve Themselves"
+date: 2025-12-18
+---
+
 Hypernetworks that Evolve Themselves
  
 Hypernetworks are a class of deep neural networks that are tasked with producing the parameters for other neural networks. In this work, we let hypernetworks produce parameter updates to copies of themselves. Combined with a simple selection mechanism, this results in a new type of genetic algorithm, where the mutation mechanism is a heritable trait. In each generation, new hypernetworks find novel ways of producing parameters for policy networks and different ways of mutating the weights of their copies. In other words, a population of hypernetworks optimizes both their performance in a task and the optimization process itself.
  
 **COPY VIDEO **
  ![Alt text](/assets/videos/hypernets/GHN_PP_video_mid.mp4)
+
+
+ <video controls width="720" preload="metadata">
+  <source src="/assets/videos/hypernets/GHN_PP_video_mod.mp4" type="video/mp4">
+  Sorry — your browser doesn’t support embedded video.
+</video>
 
 As a starting point, we use Graph Hypernetworks (GHNs). GHNs have the desirable property that the same GHN can generate parameters for neural networks of different shapes and sizes. The way they do this is to treat the neural architecture of a target network as a graph to be processed by a graph neural network (GNN). In this graph, each node is a set of parameters of the target network, primarily the weights and biases of that network. The edges in the graph are how the signal from the input layer propagates through the network to the output layer. When the GHN is presented with the graph of a target network, each node in the network is represented by a learned vector embedding that depends on the type of the node (e.g., a fully connected weight matrix, a bias vector, etc). The graph neural network inside the GHN then updates each of these presentations through message passing along the edges of the graph. In this way, each node gets a unique representation that depends on the node’s placement in the architecture of the target network. Each of these vector representations is then used as input to the final module in the GHN: the hypernetwork. In the original GHN, the hypernetwork is simply a small multi-layer perceptron (MLP), the output dimension of which is as large as the largest number of parameters (P_max) in any of the sets of parameters in the target neural network. It is this output that is used for parameter generation in the target network. Each vector representation is parsed through this same MLP, resulting in P_max output values. Parameter sets that consist of P < P_max parameters are simply given the first P output values of the hypernetwork as parameters.
  
