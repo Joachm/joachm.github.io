@@ -32,12 +32,12 @@ While the family of EAs is large, any EA will have some generic traits in some f
 
 <div style="display:flex; gap:20px; align-items:flex-start;">
   <figure style="margin:0; width:50%; text-align:center;">
-    <img src="/assets/images/hypernets/general_evo.png" alt="Image A" style="max-width:100%;" />
+    <img src="/assets/images/hypernets/general_evo.png" alt="Generalized Evolutionary Algorithm Loop" style="max-width:100%;" />
     <figcaption style="font-size:0.9em; opacity:0.8;">Left: Caption A</figcaption>
   </figure>
 
   <figure style="margin:0; width:50%; text-align:center;">
-    <img src="/assets/images/hypernets/ghn_evo.png" alt="Image B" style="max-width:100%;" />
+    <img src="/assets/images/hypernets/ghn_evo.png" alt="Self-Referential GHN Loop" style="max-width:100%;" />
     <figcaption style="font-size:0.9em; opacity:0.8;">Right: Caption B</figcaption>
   </figure>
 </div>
@@ -49,6 +49,7 @@ We change the original GHN framework in one important way: we have differentiate
 ![Full overview of the SR-GHN](/assets/images/hypernets/full_overview.png)
 
 The selection mechanism stays simple: the individuals that have the highest fitness scores when evaluating them in a task get to stay in the population and reproduce. In other words, the only thing we directly select for is GHNs that produce high-performing policy networks. However, a subset of the self-referential GHN parameters are only used for generating mutations, so how are these optimized when we only select for policy performance? The explanation is actually straightforward. When a GHN is discovered in the population, we have actually found two things. First, we have found a GHN that is better than the others at generating weights for a good policy network. Further, the parent of this superior performer is likely to be better than the other parents in its ability to create offspring. And since the offspring also inherits its mutation parameters (with some variation) from its parent, the offspring is itself likely to be a better parent than most other parents. Thus, by simply selecting for the immediate performance by the policy network, we also indirectly select for a lineage that is likely to produce superior optimizers. This double effect is only possible because the mutation mechanism is itself a heritable trait and subject to mutations.
+
 With this understanding in mind of how the self-referential GHNs can implement an evolution algorithm, let’s see it in action.
  
 
@@ -88,12 +89,55 @@ adaptation after a switch and have the most stable parameters when an optimal so
 From these videos, we can see that the Genetic Algorithm (GA) and OpenES (OES) fail due to insufficient change in their solutions after the change, whereas the Covariance Matrix-Adaptation Evolution Strategy (CMAES) becomes unstable even before the switch of action meanings occurs.
 In the videos below, conduct the same experiment, but make the switch occur at a much earlier generation.
  
-***Best Weight Evolution Videos - 300**
  
+<div style="display:flex; gap:16px; align-items:flex-start;">
+
+  <figure style="margin:0; width:220px; text-align:center;">
+    <video width="220" controls>
+      <source src="/assets/videos/v1.mp4" type="video/mp4">
+    </video>
+    <figcaption style="font-size:0.9em; opacity:0.8; margin-top:6px;">
+      Video 1: Caption here
+    </figcaption>
+  </figure>
+
+  <figure style="margin:0; width:220px; text-align:center;">
+    <video width="220" controls>
+      <source src="/assets/videos/v2.mp4" type="video/mp4">
+    </video>
+    <figcaption style="font-size:0.9em; opacity:0.8; margin-top:6px;">
+      Video 2: Caption here
+    </figcaption>
+  </figure>
+
+  <figure style="margin:0; width:220px; text-align:center;">
+    <video width="220" controls>
+      <source src="/assets/videos/v3.mp4" type="video/mp4">
+    </video>
+    <figcaption style="font-size:0.9em; opacity:0.8; margin-top:6px;">
+      Video 3: Caption here
+    </figcaption>
+  </figure>
+
+  <figure style="margin:0; width:220px; text-align:center;">
+    <video width="220" controls>
+      <source src="/assets/videos/v4.mp4" type="video/mp4">
+    </video>
+    <figcaption style="font-size:0.9em; opacity:0.8; margin-top:6px;">
+      Video 4: Caption here
+    </figcaption>
+  </figure>
+</div>
+
+
+
 Here, GA and OES suffer from the same problems as before, but CMAES is actually able to adapt to the changing environment. The self-referential GHNs also perform well for this switch.
 For good measure, we also try a much longer timescale:
  
 ***Best Weight Evolution Videos - 3000**
+
+
+
  
 Again, only the self-referential GHNs perform well in this case.
  
